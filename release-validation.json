@@ -1,0 +1,35 @@
+{
+  "release": "v2.0.0",
+  "date": "2026-10-31",
+  "license": "GPL-2.0-only",
+  "author": "jkHXQ",
+  "release_sha256": "3df336614c865abca1c70dc50656ee69ce555fc951366306c24b90b3e8ffaa06",
+  "ko_sha256": "64e282e42f3208358843c494f1340a4a6cba94edabe59b8d419a29189aec79b4",
+  "historical_android_shell_exit": 0,
+  "historical_mt_gui_click_test": "NOT_RUN",
+  "historical_v2_current_level_rc": [
+    -22,
+    -22
+  ],
+  "historical_scores": {
+    "cluster0": 3217,
+    "cluster1": 1856,
+    "combined": 2536
+  },
+  "publication_checks": {
+    "embedded_payload": "PASS",
+    "zip_contents": "PASS",
+    "source_hash_match": "PASS",
+    "ko_rebuild_byte_identical": true,
+    "mt_repack_pc_byte_identical": true,
+    "mt_repack_android_byte_identical": true,
+    "android_awk_regressions_passed": 8,
+    "new_module_loaded": false
+  },
+  "publication_build_issues_resolved": [
+    "Generated symvers CRLF converted to LF",
+    "ADB shorter-file overwrite retained a suffix; replaced with truncating root write and SHA256 verification"
+  ],
+  "cross_version_support": "NOT_CLAIMED_FOR_V2",
+  "autoload": false
+}

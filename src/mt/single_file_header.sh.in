@@ -1,0 +1,37 @@
+#!/system/bin/sh
+# RMX5010 MT single-file test. Embedded payload is integrity checked.
+# GET-only kernel module, manual execution; no frequency/voltage writes.
+set -eu
+SELF=$0
+case "$SELF" in /*) ;; *) SELF="$(pwd)/$SELF";; esac
+if [ ! -r "$SELF" ]; then echo '请在 MT 管理器中直接执行此 .sh 文件，不要只执行选中的文本。'; exit 1; fi
+if [ "$(id -u)" != 0 ]; then
+ if [ "${1:-}" = --root-retry ]; then echo '未取得 root 权限，请给 MT 管理器授权后再试。'; exit 1; fi
+ echo '正在申请 root；如有授权提示，请允许 MT 管理器。'
+ Q=$(printf '%s' "$SELF" | sed "s/'/'\\\\''/g")
+ exec su -c "/system/bin/sh '$Q' --root-retry"
+fi
+WORK=''
+cleanup() {
+ rc=$?; trap - EXIT HUP INT TERM
+ if [ -n "$WORK" ]; then
+  case "$WORK" in /data/local/tmp/cpuvoltage_mt.*)
+   for n in payload.tar.gz run_core.sh decode_score.awk reference_author.txt live_voltage_scmi_v1.ko; do rm -f "$WORK/$n" || rc=1; done
+   rmdir "$WORK" || rc=1;;
+  *) echo '临时目录异常，拒绝自动清理'; rc=1;; esac
+ fi
+ echo "执行结束，状态码：$rc"
+ if [ -t 0 ] && [ "${CPU_VOLTAGE_NO_PAUSE:-0}" != 1 ]; then printf '按回车退出……'; read -r ignored || true; fi
+ exit "$rc"
+}
+trap cleanup EXIT HUP INT TERM
+umask 077
+WORK=$(mktemp -d /data/local/tmp/cpuvoltage_mt.XXXXXX)
+awk 'found {print} /^__CPU_VOLTAGE_PAYLOAD_BASE64__$/ {found=1}' "$SELF" | base64 -d > "$WORK/payload.tar.gz"
+[ "$(sha256sum "$WORK/payload.tar.gz" | cut -d ' ' -f 1)" = __PAYLOAD_SHA256__ ] || { echo '内置文件校验失败，请重新下载原脚本。'; exit 1; }
+tar -xzf "$WORK/payload.tar.gz" -C "$WORK"
+echo 'SM8750 CPU 电压体质测试 · MT 单文件版'
+echo '只读查询，不修改电压或频率；请勿强制加载不匹配版本。'
+sh "$WORK/run_core.sh"
+exit $?
+__CPU_VOLTAGE_PAYLOAD_BASE64__

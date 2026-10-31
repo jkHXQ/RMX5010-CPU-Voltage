@@ -1,0 +1,2 @@
+bd641991dff0e26c5ada6cf5d9c109a1fe63d47ca9cf69494f5b515ae7c55c4f  SM8750_CPU体质测试_MT单文件版_v2.zip
+3df336614c865abca1c70dc50656ee69ce555fc951366306c24b90b3e8ffaa06  SM8750_CPU体质测试_MT直接执行_v2.sh

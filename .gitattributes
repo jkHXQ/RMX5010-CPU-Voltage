@@ -1,0 +1,5 @@
+* text=auto eol=lf
+src/** -text
+dist/** -text
+prebuilt/** -text
+tests/fixtures/** -text

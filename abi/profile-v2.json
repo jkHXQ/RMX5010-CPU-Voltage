@@ -1,0 +1,53 @@
+{
+  "module_name": "live_voltage_scmi_v1",
+  "source_sha256": "d84f8c3a6bfad8fef52bee3e9c4c6f0327502b3ba5905ad02685d37dd5b8252e",
+  "vermagic": "6.6.89-android15-8-o-ge808d335c11f-4k SMP preempt mod_unload modversions aarch64",
+  "init_kcfi": "a6c5b136",
+  "imports": [
+    {
+      "name": "_printk",
+      "crc": "0x92997ed8"
+    },
+    {
+      "name": "mutex_lock",
+      "crc": "0xd5977bfb"
+    },
+    {
+      "name": "scnprintf",
+      "crc": "0x96848186"
+    },
+    {
+      "name": "get_qcom_scmi_device",
+      "crc": "0xb0e7a18b"
+    },
+    {
+      "name": "mutex_unlock",
+      "crc": "0xed55cabd"
+    },
+    {
+      "name": "__stack_chk_fail",
+      "crc": "0xf0fdf6cb"
+    },
+    {
+      "name": "memcpy",
+      "crc": "0x4829a47e"
+    },
+    {
+      "name": "param_ops_uint",
+      "crc": "0x460da8f5"
+    },
+    {
+      "name": "module_layout",
+      "crc": "0x4e276f37"
+    }
+  ],
+  "ko_sha256": "64e282e42f3208358843c494f1340a4a6cba94edabe59b8d419a29189aec79b4",
+  "target_model": "RMX5010",
+  "target_soc": "SM8750",
+  "validated_kernel": "6.6.89-android15-8-g7e1f3c083cc6-abogki467167594-4k",
+  "clang_version": "21.1.8",
+  "stack_guard_offset": 1568,
+  "cpu_cp_sha256": "2a2b9ce917e06cd4aafdfc4cd42c9cf63c7e627df46f7682f3769f38121662c5",
+  "qcom_scmi_vendor_note_sha256": "bc3191abc43b3328e29435a58827e5592475e4249b3feaf54385157392f0a278",
+  "probe_note_sha256": "ae461bbd0c810f2b9134dbece68973d882fac00fd0b4b9a955919fb11fa4b353"
+}
