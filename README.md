@@ -10,7 +10,7 @@
 
 从 [Releases](https://github.com/jkHXQ/RMX5010-CPU-Voltage/releases) 下载单个 `.sh`，或下载 ZIP 后解压。
 
-1. 在 MT 管理器中找到 `SM8750_CPU体质测试_MT直接执行_v2.sh`。
+1. 在 MT 管理器中找到下载的 `.sh`。Releases 使用英文文件名 `SM8750_CPU_Voltage_MT_v2.sh`；ZIP 内及仓库 `dist/` 保留原中文文件名，内容完全相同。
 2. 选择“执行”，按提示给予 root 权限。
 3. 结果位于 `/sdcard/Download/CPU-voltage-MT-results/`，每次测试生成独立目录。
 4. 分享该目录中的 `分享结果.txt`；分享前自行检查设备型号、系统构建信息是否适合公开。
